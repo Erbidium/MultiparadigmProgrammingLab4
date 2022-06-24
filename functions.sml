@@ -37,11 +37,11 @@ val rev_string = String.implode o rev o String.explode;
 
 exception NoAnswer;
 
-fun first_answer(functionToApply, list) =
+fun first_answer functionToApply list =
     case list of
     head::tail => (case functionToApply(head) of
                    SOME v => v
-                   |NONE => first_answer(functionToApply, tail))
+                   |NONE => (first_answer functionToApply tail))
     |[] => raise NoAnswer;   
 
 fun all_answers functionToApply list =

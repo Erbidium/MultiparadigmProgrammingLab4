@@ -120,16 +120,15 @@ fun provided_test_first_answer() =
         val list3 = [1, 2, 3]
     in
         [
-            (if (first_answer((fn arg => if arg = 4 then SOME (arg) else NONE), list1)) = 4 then "Right" else "NOT") handle (NoAnswer) => "Wrong",
-            (if (first_answer((fn arg => if arg = 4 then SOME (arg) else NONE), list2)) = 4 then "Right" else "NOT") handle (NoAnswer) => "Wrong",
-            (if (first_answer((fn arg => if arg = 4 then SOME (arg) else NONE), list3)) = 4 then "Right" else "NOT") handle (NoAnswer) => "Wrong"
+            (if (first_answer (fn arg => if arg = 4 then SOME (arg) else NONE) list1) = 4 then "Right" else "NOT") handle (NoAnswer) => "Wrong",
+            (if (first_answer (fn arg => if arg = 4 then SOME (arg) else NONE) list2) = 4 then "Right" else "NOT") handle (NoAnswer) => "Wrong",
+            (if (first_answer (fn arg => if arg = 4 then SOME (arg) else NONE) list3) = 4 then "Right" else "NOT") handle (NoAnswer) => "Wrong"
         ]
     end;
 
 provided_test_first_answer();
 
-use "functions.sml";
-(*first_answer tests*)
+(*all_answers tests*)
 fun provided_test_all_answers() = 
     let
         val list1 = [5, 4, 3, 2, 1]
