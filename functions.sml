@@ -82,3 +82,9 @@ fun g f1 f2 p =
 	  | ConstructorP(_,p) => r p
 	  | _                 => 0
     end;
+
+
+fun count_wildcards(pat: pattern) =
+    g (fn _ => 1)
+      (fn _ => 0)
+      pat;

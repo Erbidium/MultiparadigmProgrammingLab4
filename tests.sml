@@ -143,3 +143,21 @@ fun provided_test_all_answers() =
     end;
 
 provided_test_all_answers();
+
+(*count_wildcards tests*)
+fun provided_test_count_wildcards() = 
+    let
+        val pattern1: pattern = (TupleP ([ConstP(1),ConstP(1), ConstructorP("mystr", Wildcard)]))
+        val pattern2: pattern = Wildcard
+        val pattern3: pattern = (TupleP ([Wildcard,ConstP(1), Wildcard, Wildcard]))
+        val pattern4: pattern = Variable "hello"
+    in
+        [
+            count_wildcards(pattern1),
+            count_wildcards(pattern2),
+            count_wildcards(pattern3),
+            count_wildcards(pattern4)
+        ]
+    end;
+
+provided_test_count_wildcards();
