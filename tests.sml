@@ -47,3 +47,35 @@ fun provided_test_longest_string2() =
     end;
 
 provided_test_longest_string2();
+
+(*longest_string3 tests*)
+fun provided_test_longest_string3() = 
+    let
+        val strList1 = []
+        val strList2 = ["1111","2222", "3333"]
+        val strList3 = ["car", "aircraft", "airport", "ship", "bicylcle"]
+    in
+        [
+            longest_string3(strList1),
+            longest_string3(strList2),
+            longest_string3(strList3)
+        ]
+    end;
+
+provided_test_longest_string3();
+
+(*longest_string4 tests*)
+fun provided_test_longest_string4() = 
+    let
+        val strList1 = []
+        val strList2 = ["1111","2222", "3333"]
+        val strList3 = ["car", "aircraft", "airport", "ship", "bicylcle"]
+    in
+        [
+            longest_string4(strList1),
+            longest_string4(strList2),
+            longest_string4(strList3)
+        ]
+    end;
+
+provided_test_longest_string4();

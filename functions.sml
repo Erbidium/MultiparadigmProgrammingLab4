@@ -18,3 +18,16 @@ fun longest_string2(stringList: string list) =
 		            else str2)
                 ""
                 stringList;
+
+fun longest_string_helper stringComparator stringList =
+    List.foldl (fn (str1, str2) => 
+                    if stringComparator(String.size str1, String.size str2)
+                    then str1
+		            else str2)
+                ""
+                stringList;
+
+val longest_string3 = longest_string_helper (fn (str1, str2) => str1 > str2);
+
+val longest_string4 = longest_string_helper (fn (str1, str2) => str1 >= str2);
+    
