@@ -112,8 +112,6 @@ fun provided_test_rev_string() =
 
 provided_test_rev_string();
 
-
-use "functions.sml";
 (*first_answer tests*)
 fun provided_test_first_answer() = 
     let
@@ -129,3 +127,20 @@ fun provided_test_first_answer() =
     end;
 
 provided_test_first_answer();
+
+use "functions.sml";
+(*first_answer tests*)
+fun provided_test_all_answers() = 
+    let
+        val list1 = [5, 4, 3, 2, 1]
+        val list2 = [4]
+        val list3 = [1, 2, 3]
+    in
+        [
+            all_answers (fn arg => if arg > 0 then SOME [arg] else NONE) list1,
+            all_answers (fn arg => if arg = 4 then SOME [arg] else NONE) list2,
+            all_answers (fn arg => if arg < 3 then SOME [arg] else NONE) list3
+        ]
+    end;
+
+provided_test_all_answers();

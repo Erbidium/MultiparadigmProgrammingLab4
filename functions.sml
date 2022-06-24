@@ -40,7 +40,18 @@ exception NoAnswer;
 fun first_answer(functionToApply, list) =
     case list of
     head::tail => (case functionToApply(head) of
-                    SOME v => v
-                    |NONE => first_answer(functionToApply, tail))
-    |[] => raise NoAnswer;
-    
+                   SOME v => v
+                   |NONE => first_answer(functionToApply, tail))
+    |[] => raise NoAnswer;   
+
+fun all_answers functionToApply list =
+    let
+        fun helper(tl, accum) = 
+            case tl of
+            head::tail => (case functionToApply(head) of
+                           SOME v => helper(tail, accum @ v)
+                           |NONE => NONE)
+            |[] => SOME (accum)
+    in
+        helper(list, [])
+    end;
