@@ -162,7 +162,6 @@ fun provided_test_count_wildcards() =
 
 provided_test_count_wildcards();
 
-use "functions.sml";
 (*count_wild_and_variable_lengths tests*)
 fun provided_test_count_wild_and_variable_lengths() = 
     let
@@ -180,3 +179,22 @@ fun provided_test_count_wild_and_variable_lengths() =
     end;
 
 provided_test_count_wild_and_variable_lengths();
+
+use "functions.sml";
+(*count_some_var tests*)
+fun provided_test_count_some_var() = 
+    let
+        val str1 = "car" val pattern1: pattern = (TupleP ([Variable "car", Variable "car", ConstructorP("mystr", Wildcard)]))
+        val str2 = "car"  val pattern2: pattern = Wildcard
+        val str3 = "sometext"  val pattern3: pattern = (TupleP ([Wildcard, Variable "sometext", Wildcard, Wildcard]))
+        val str4 = "hello"  val pattern4: pattern = Variable "hello"
+    in
+        [
+            count_some_var(str1, pattern1),
+            count_some_var(str2, pattern2),
+            count_some_var(str3, pattern3),
+            count_some_var(str4, pattern4)
+        ]
+    end;
+
+provided_test_count_some_var();

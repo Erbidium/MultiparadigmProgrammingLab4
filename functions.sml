@@ -93,3 +93,10 @@ fun count_wild_and_variable_lengths(pat: pattern) =
     g (fn _ => 1)
       (String.size)
       pat;
+
+fun count_some_var(str: string, pat: pattern) =
+    g (fn _ => 0)
+      (fn strParam => if strParam = str
+                      then 1
+                      else 0)
+      pat;
