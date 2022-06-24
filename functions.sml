@@ -88,3 +88,8 @@ fun count_wildcards(pat: pattern) =
     g (fn _ => 1)
       (fn _ => 0)
       pat;
+
+fun count_wild_and_variable_lengths(pat: pattern) =
+    g (fn _ => 1)
+      (String.size)
+      pat;
