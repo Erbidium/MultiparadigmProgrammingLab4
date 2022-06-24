@@ -95,3 +95,19 @@ fun provided_test_longest_capitalized() =
     end;
 
 provided_test_longest_capitalized();
+
+(*longest_capitalized tests*)
+fun provided_test_rev_string() = 
+    let
+        val str1 = "Elizabeth"
+        val str2 = "London"
+        val str3 = "airport"
+    in
+        [
+            rev_string(str1),
+            rev_string(str2),
+            rev_string(str3)
+        ]
+    end;
+
+provided_test_rev_string();
