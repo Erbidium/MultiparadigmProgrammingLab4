@@ -15,3 +15,35 @@ fun provided_test_only_capitals() =
     end;
 
 provided_test_only_capitals();
+
+(*longest_string1 tests*)
+fun provided_test_longest_string1() = 
+    let
+        val strList1 = []
+        val strList2 = ["1111","2222", "3333"]
+        val strList3 = ["car", "aircraft", "airport", "ship", "bicylcle"]
+    in
+        [
+            longest_string1(strList1),
+            longest_string1(strList2),
+            longest_string1(strList3)
+        ]
+    end;
+
+provided_test_longest_string1();
+
+(*longest_string2 tests*)
+fun provided_test_longest_string2() = 
+    let
+        val strList1 = []
+        val strList2 = ["1111","2222", "3333"]
+        val strList3 = ["car", "aircraft", "airport", "ship", "bicylcle"]
+    in
+        [
+            longest_string2(strList1),
+            longest_string2(strList2),
+            longest_string2(strList3)
+        ]
+    end;
+
+provided_test_longest_string2();
