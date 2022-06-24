@@ -30,4 +30,6 @@ fun longest_string_helper stringComparator stringList =
 val longest_string3 = longest_string_helper (fn (str1, str2) => str1 > str2);
 
 val longest_string4 = longest_string_helper (fn (str1, str2) => str1 >= str2);
+
+val longest_capitalized = longest_string1 o only_capitals;
     
