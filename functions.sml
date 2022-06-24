@@ -34,4 +34,13 @@ val longest_string4 = longest_string_helper (fn (str1, str2) => str1 >= str2);
 val longest_capitalized = longest_string1 o only_capitals;
 
 val rev_string = String.implode o rev o String.explode;
+
+exception NoAnswer
+
+fun first_answer functionToApply list =
+    case list of
+    head::tail => (case (functionToApply head) of
+                    SOME v => v
+                    |NONE => first_answer functionToApply tail)
+    |[] => raise NoAnswer;
     
