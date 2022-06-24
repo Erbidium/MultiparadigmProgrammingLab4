@@ -100,3 +100,24 @@ fun count_some_var(str: string, pat: pattern) =
                       then 1
                       else 0)
       pat;
+
+fun check_pat(pat: pattern) =
+    let
+        fun getStrVariables(patt: pattern) =
+            case patt of
+            Variable x => [x]
+            |TupleP ps => List.foldl(fn (p1, acc) => 
+                                        getStrVariables(p1) @ acc)
+                                     []
+                                     ps
+            |ConstructorP(_,p) => getStrVariables(p)
+            |_ => []
+        fun checkDublicates(stringList: string list) =
+            case stringList of
+            [] => true
+            |head::tail => if (List.exists (fn s => s = head) tail)
+                           then false
+                           else checkDublicates(tail)
+    in
+        checkDublicates(getStrVariables(pat))
+    end;
