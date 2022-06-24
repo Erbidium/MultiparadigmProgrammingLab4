@@ -111,3 +111,21 @@ fun provided_test_rev_string() =
     end;
 
 provided_test_rev_string();
+
+
+use "functions.sml";
+(*first_answer tests*)
+fun provided_test_first_answer() = 
+    let
+        val list1 = [5, 4, 3, 2, 1]
+        val list2 = [4]
+        val list3 = [1, 2, 3]
+    in
+        [
+            (if (first_answer((fn arg => if arg = 4 then SOME (arg) else NONE), list1)) = 4 then "Right" else "NOT") handle (NoAnswer) => "Wrong",
+            (if (first_answer((fn arg => if arg = 4 then SOME (arg) else NONE), list2)) = 4 then "Right" else "NOT") handle (NoAnswer) => "Wrong",
+            (if (first_answer((fn arg => if arg = 4 then SOME (arg) else NONE), list3)) = 4 then "Right" else "NOT") handle (NoAnswer) => "Wrong"
+        ]
+    end;
+
+provided_test_first_answer();
