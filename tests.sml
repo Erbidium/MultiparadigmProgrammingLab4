@@ -198,7 +198,6 @@ fun provided_test_count_some_var() =
 
 provided_test_count_some_var();
 
-use "functions.sml";
 (*check_pat tests*)
 fun provided_test_check_pat() = 
     let
@@ -216,3 +215,28 @@ fun provided_test_check_pat() =
     end;
 
 provided_test_check_pat();
+
+(*first_match tests*)
+fun provided_test_first_match() = 
+    let
+        val valu1: valu = Const 5
+        val pattern1: pattern list = [Variable "car", ConstP 5, ConstructorP("mystr", Wildcard)]
+        
+        val valu2: valu = Unit
+        val pattern2: pattern list = [UnitP]
+
+        val valu3: valu = Constructor("str1", Const 1)
+        val pattern3: pattern list = [Wildcard, Variable "sometext", ConstructorP("str1", ConstP 1)]
+
+        val valu4: valu = Tuple ([Const 5, Const 1])
+        val pattern4: pattern list = [TupleP ([ConstP 5, Variable "car"])]
+    in
+        [
+            first_match(valu1, pattern1),
+            first_match(valu2, pattern2),
+            first_match(valu3, pattern3),
+            first_match(valu4, pattern4)
+        ]
+    end;
+
+provided_test_first_match();

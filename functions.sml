@@ -120,4 +120,25 @@ fun check_pat(pat: pattern) =
                            else checkDublicates(tail)
     in
         checkDublicates(getStrVariables(pat))
+    end; 
+
+fun first_match(someValue: valu, patternList: pattern list) =
+    let
+        fun matchHelper(v: valu, somePattern: pattern) =
+            case (v, somePattern) of  
+            (_, Wildcard) => SOME []
+            |(_, Variable s) => SOME [(s,v)]
+            |(Unit, UnitP) => SOME []
+            |(Const vLocal, ConstP p) => (if vLocal = p 
+                                          then SOME []
+                                          else NONE)
+            |(Tuple vs, TupleP ps) => (if (List.length vs) = (List.length ps)
+                                       then all_answers matchHelper (ListPair.zip(vs, ps)) 
+                                       else NONE)
+            |(Constructor (s1, vLocal), ConstructorP (s2, pLocal)) => (if s1 = s2
+                                                                       then matchHelper(vLocal, pLocal)
+                                                                       else NONE)
+            |(_, _) => NONE
+    in
+        SOME (first_answer (fn patParam => matchHelper(someValue, patParam)) patternList) handle NoAnswer => NONE
     end;
